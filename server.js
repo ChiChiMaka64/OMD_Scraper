@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/27017", { useNewUrlParser: true });
 
 
 app.get("/scrape", function(req, res) {
@@ -42,18 +42,15 @@ app.get("/scrape", function(req, res) {
       // Now, we grab every h2 within an article tag, and do the following:
       $('.tm-content-container').each(function(i, element) {
 
-        console.log(element);
-
         // Save an empty result object
         var result = {};
   
         // Add the text and href of every link, and save them as properties of the result object
         result.title = $(this)
-          .children("h1")
           .text();
-        //result.link = $(this)
-          // .children("a")
-          // .attr("href");
+        
+        result.link = $(this)
+          .attr("href");
   
         // Create a new Article using the `result` object built from scraping
         db.Article.create(result)
@@ -126,5 +123,3 @@ app.get("/articles", function(req, res) {
   });
   
   
-
-
