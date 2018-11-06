@@ -29,45 +29,41 @@ app.use(express.static("public"));
 // Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/27017", { useNewUrlParser: true });
 
-
-app.get("/scrape", function (req, res) {
+app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with axios
-  axios.get("https://ohmy.disney.com/").then(function (response) {
-
-    //console.log(response.data);
-
+  axios.get("https://ohmy.disney.com/").then(function(response) {
+    
+  //console.log(response.data);
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
     // Now, we grab every h2 within an article tag, and do the following:
-    $('#tm-content article').each(function (i, element) {
-
+    $('.tm-content').children('article').each(function (i, element) {
       // Save an empty result object
       var result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
-      result.title = $(this)
-        .find("h2").text();
-      result.text = $(this)
-        .find("p").text();
-      result.linkHref = $(this).find("a").attr("href");
-      console.log(result.title, result.text, result.linkHref);
-
+      result.title = $(this).children('.tm-article-text').children('h2').children('a')
+        .text();
       
+      result.link = $(this).children('.tm-article-text').children('h2').children('a')
+        .attr("href");
+
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
-        .then(function (dbArticle) {
+        .then(function(dbArticle) {
           // View the added result in the console
           console.log(dbArticle);
         })
-        .catch(function (err) {
+        .catch(function(err) {
           // If an error occurred, send it to the client
           return res.json(err);
         });
     });
-    res.send("Scrape Complete");
-  });
+    res.redirect("/");
 });
+});
+
 
 // Route for getting all Articles from the db
 app.get("/articles", function (req, res) {

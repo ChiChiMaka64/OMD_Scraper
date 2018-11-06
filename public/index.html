@@ -1,61 +1,75 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>The Oh My Disney Scraper!</title>
-    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
-    <style>
-      body { background: url("disney.jpg") no-repeat;
-             background-size: cover;}
-      #wrapper {
-        width: 960px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 5%;
-        color: aquamarine;
-        font-family: 'Acme', sans-serif;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.4);
-      }
-      #articles {
-        display: inline-block;
-        overflow: auto;
-        width: 60%;
-        height: 700px;
-        color: aquamarine;
-        background: rgba(0, 0, 0, 0.4);
-      }
-      #notes {
-        float: right;
-        width: 30%;
-        background: rgba(0, 0, 0, 0.4);
-        color: aquamarine;
-      }
-      textarea, input {
-        display: block;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        color: turquoise;
-        font-family: 'Acme', sans-serif;
-      }
-      input {
-        height: 36px;
-        font-size: 24px;
-      }
-      textarea {
-        height: 200px;
-        font-size: 18px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="wrapper">
-      <h1>The Oh My Disney Scraper!</h1>
-      <h2><i>"It's kind of fun to do the impossible." -Walt Disney</i></h2>
-      <div id="articles"a href="./models/article.js"></div>
-      <div id="notes" a href="./models/note.js"></div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="app.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <title>The Oh My Disney Scraper!</title>
+  <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+  <style>
+    body {
+      background: url("disney.jpg") no-repeat;
+      background-size: cover;
+    }
+
+    #wrapper {
+      width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 5%;
+      color: aquamarine;
+      font-family: 'Acme', sans-serif;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    #articles {
+      display: inline-block;
+      overflow: auto;
+      width: 60%;
+      height: 700px;
+      color: aquamarine;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    #notes {
+      float: right;
+      width: 30%;
+      background: rgba(0, 0, 0, 0.4);
+      color: aquamarine;
+    }
+
+    textarea,
+    input {
+      display: block;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      color: turquoise;
+      font-family: 'Acme', sans-serif;
+    }
+
+    input {
+      height: 36px;
+      font-size: 24px;
+    }
+
+    textarea {
+      height: 200px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <h1>The Oh My Disney Scraper!</h1>
+    <h2>
+      <i>"It's fun to do the impossible." -Walt Disney</i>
+    </h2>
+    <div id="articles" a href="./models/article.js"></div>
+    <div id="notes" a href="./models/note.js"></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
 </html>
