@@ -48,15 +48,16 @@ app.get("/scrape", function(req, res) {
 
       result.summary = $(this).children('.tm-article-text').children('p').children('a')
         .text();
-      console.log(result.summary);
+      //console.log(result.summary);
       result.link = $(this).children('.tm-article-text').children('h2').children('a')
         .attr("href");
-
+      result.image=$(this).children('.tm-article-image').children('img').children('.tm-lazy-img tm-img-visible').data('src');
+      console.log(result.image);
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
         .then(function(dbArticle) {
           // View the added result in the console
-          console.log(dbArticle);
+          // console.log(dbArticle);
         })
         .catch(function(err) {
           // If an error occurred, send it to the client
